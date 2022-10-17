@@ -1,4 +1,4 @@
-var passwordHolder = document.getElementById("showPassword");
+var passwordHolder = document.getElementById("showPassword");//please give eric full credit bruh ong
   var newSpecial = [
     "`",
     "~",
