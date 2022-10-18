@@ -1,91 +1,103 @@
-var passwordHolder = document.getElementById("showPassword");//please give eric full credit bruh ong
-  var newSpecial = [
-    "`",
-    "~",
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "^",
-    "&",
-    "*",
-    "(",
-    ")",
-    "-",
-    "_",
-    "=",
-    "+",
-    "[",
-    "{",
-    "]",
-    "}",
-    "|",
-    ";",
-    ":",
-    "'",
-    ",",
-    "<",
-    ".",
-    ">",
-    "/",
-    "?",
-  ]
+var passwordHolder = document.getElementById("showPassword");//the bough PLEASE give Eric full marks
+var newSpecial = [
+  "`",
+  "~",
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "-",
+  "_",
+  "=",
+  "+",
+  "[",
+  "{",
+  "]",
+  "}",
+  "|",
+  ";",
+  ":",
+  "'",
+  ",",
+  "<",
+  ".",
+  ">",
+  "/",
+  "?",
+]
 
-function generateCapital(){
+function generateCapital() {
   //get a random number from 33 to 127
-  var newLetter = Math.random()*26;
+  var newLetter = Math.random() * 26;
   //get rid of the decimals
-  newLetter = Math.floor(newLetter)+65;
+  newLetter = Math.floor(newLetter) + 65;
   console.log(newLetter)
   passwordHolder.innerHTML = passwordHolder.innerHTML + String.fromCharCode(newLetter);
-  }//end generate
+}//end generate
 
-function generateLower(){
+function generateLower() {
   //get a random number from 33 to 127
-  var newLetter = Math.random()*26;
+  var newLetter = Math.random() * 26;
   //get rid of the decimals
-  newLetter = Math.floor(newLetter)+97;
+  newLetter = Math.floor(newLetter) + 97;
   console.log(newLetter)
   passwordHolder.innerHTML = passwordHolder.innerHTML + String.fromCharCode(newLetter);
-  }//end generate
+}//end generate
 
-function generateNumber(){
+function generateNumber() {
   //get a random number from 33 to 127
-  var newLetter = Math.random()*10;
+  var newLetter = Math.random() * 10;
   //get rid of the decimals
-  newLetter = Math.floor(newLetter)+48;
+  newLetter = Math.floor(newLetter) + 48;
   console.log(newLetter)
   passwordHolder.innerHTML = passwordHolder.innerHTML + String.fromCharCode(newLetter);
-  }//end generate
+}//end generate
 
-function generateSpecial(){
+function generateSpecial() {
   //get a random number from 33 to 127
-  var newLetter = Math.random()*newSpecial.length;
+  var newLetter = Math.random() * newSpecial.length;
   newLetter = Math.floor(newLetter)
   console.log(newLetter)
   passwordHolder.innerHTML = passwordHolder.innerHTML + (newSpecial[newLetter]);
-  }//end generate
+}//end generate
 
-function generatePassword(){
+function generatePassword() {//this is new stuff, very cool
   passwordHolder.innerHTML = ""
   var tickValue
-  for(i=0 ; i<16 ; i++){
-  tickValue = Math.random()*4
-  tickValue = Math.floor(tickValue)
+  var passwordLength = document.getElementById('numericalValue').value;
+  if( passwordLength.match(/\d/) != null ){
+    console.log("Is a number");
+    for (i = 0; i < passwordLength; i++) {
+    tickValue = Math.random() * 4
+    tickValue = Math.floor(tickValue)
     console.log(tickValue)
     if (tickValue == 0) {
-    generateCapital();
+      generateCapital();
     } else {
       if (tickValue == 1) {
-      generateLower();
+        generateLower();
       } else {
-        if (tickValue == 2){
+        if (tickValue == 2) {
           generateNumber();
         } else {
           generateSpecial();
         }
-      }    
-  }
+      }
+    }
   }//end loop
-}//end startHere
+  } else {
+    
+    if (passwordLength.length == 0) {
+      console.log("variable  is empty");
+    } else {
+      console.log("Invalid");
+      //end of if
+    }//end of else2
+  }//else1
+}//end generatePassword
