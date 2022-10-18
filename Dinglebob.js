@@ -1,5 +1,6 @@
-var passwordHolder = document.getElementById("showPassword");//the bough PLEASE give Eric full marks
+var passwordHolder = document.getElementById("showPassword");//gaming.com
 var newSpecial = [
+  //"eric jesse cure"
   "`",
   "~",
   "!",
@@ -67,19 +68,23 @@ function generateSpecial() {
   passwordHolder.innerHTML = passwordHolder.innerHTML + (newSpecial[newLetter]);
 }//end generate
 
-function generatePassword() {//this is new stuff, very cool
+function generatePassword() {
   passwordHolder.innerHTML = ""
   var tickValue
+  //bro built like a canoe
   var passwordLength = document.getElementById('numericalValue').value;
-  if( passwordLength.match(/\d/) != null ){
+  if(passwordLength.match(/\d/) != null ){
     console.log("Is a number");
+    if(passwordLength>99){
+      passwordHolder.innerHTML = "Please don't input values above ninety nine."
+    }else{
     for (i = 0; i < passwordLength; i++) {
     tickValue = Math.random() * 4
     tickValue = Math.floor(tickValue)
     console.log(tickValue)
     if (tickValue == 0) {
       generateCapital();
-    } else {
+    } else {//if you remove the credits from this you're racist
       if (tickValue == 1) {
         generateLower();
       } else {
@@ -90,13 +95,15 @@ function generatePassword() {//this is new stuff, very cool
         }
       }
     }
-  }//end loop
+  }//end loop//i love racing
+    }//end else
   } else {
-    
     if (passwordLength.length == 0) {
       console.log("variable  is empty");
-    } else {
+      passwordHolder.innerHTML = "Please input a numerical value."
+    } else {//kfjsfowejwjjjjjjj
       console.log("Invalid");
+      passwordHolder.innerHTML = "Please input a numerical value."
       //end of if
     }//end of else2
   }//else1
